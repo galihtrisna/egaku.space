@@ -1,132 +1,907 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.welcome')
+@section('title')
+@section('content')
+    <main>
+      <!-- Hero -->
+      <section class="relative pb-10 pt-20 md:pt-32 lg:h-[88vh]">
+        <picture class="pointer-events-none absolute inset-x-0 top-0 -z-10 dark:hidden">
+          <img src="img/gradient.jpg" alt="gradient" />
+        </picture>
+        <picture class="pointer-events-none absolute inset-x-0 top-0 -z-10 hidden dark:block">
+          <img src="img/gradient_dark.jpg" alt="gradient dark" />
+        </picture>
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </div>
-                </div>
+        <div class="container h-full">
+          <div class="grid h-full items-center gap-4 md:grid-cols-12">
+            <div
+              class="col-span-6 flex h-full flex-col items-center justify-center py-10 md:items-start md:py-20 xl:col-span-4"
+            >
+              <h1
+                class="text-jacarta-700 font-display mb-6 text-center text-5xl dark:text-white md:text-left lg:text-6xl xl:text-7xl"
+              >
+                Search and Save Ideas
+              </h1>
+              <p class="dark:text-jacarta-300 mb-8 text-center text-lg md:text-left">
+                When it comes to a great idea, you know it when you see it
+              </p>
+              <div class="flex space-x-4">
+                <a
+                  href="create.html"
+                  class="bg-accent shadow-accent-volume hover:bg-accent-dark w-36 rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+                >
+                  Upload
+                </a>
+                <a
+                  href="collections.html"
+                  class="text-accent shadow-white-volume hover:bg-accent-dark hover:shadow-accent-volume w-36 rounded-full bg-white py-3 px-8 text-center font-semibold transition-all hover:text-white"
+                >
+                  Explore
+                </a>
+              </div>
             </div>
+
+            <!-- Hero image -->
+            <div class="col-span-6 xl:col-span-8">
+              <div class="relative text-center md:pl-8 md:text-right">
+                <svg
+                  viewbox="0 0 200 200"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="mt-8 inline-block w-72 rotate-[8deg] sm:w-full lg:w-[24rem] xl:w-[35rem]"
+                >
+                  <defs>
+                    <clipPath id="clipping" clipPathUnits="userSpaceOnUse">
+                      <path
+                        d="
+                    M 0, 100
+                    C 0, 17.000000000000004 17.000000000000004, 0 100, 0
+                    S 200, 17.000000000000004 200, 100
+                        183, 200 100, 200
+                        0, 183 0, 100
+                "
+                        fill="#9446ED"
+                      ></path>
+                    </clipPath>
+                  </defs>
+                  <g clip-path="url(#clipping)">
+                    <!-- Bg image -->
+                    <image href="img/hero/hero.jpg" width="200" height="200" clip-path="url(#clipping)" />
+                  </g>
+                </svg>
+                <img src="img/hero/3D_elements.png" alt="" class="animate-fly absolute top-0 md:-right-[10%]" />
+              </div>
+            </div>
+          </div>
         </div>
-    </body>
-</html>
+      </section>
+      <!-- end hero -->
+
+      <!-- Hot Bids -->
+      <section class="pt-10 pb-24">
+        <div class="container">
+          <h2 class="font-display text-jacarta-700 mb-8 text-center text-3xl dark:text-white">
+            <span
+              class="mr-1 inline-block h-6 w-6 bg-contain bg-center text-xl"
+              style="
+                background-image: url(https://cdn.jsdelivr.net/npm/emoji-datasource-apple@7.0.2/img/apple/64/1f525.png);
+              "
+            ></span>
+            Trending
+          </h2>
+
+          <div class="relative">
+            <!-- Slider -->
+            <div class="swiper card-slider-4-columns !py-5">
+              <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                  <article>
+                    <div
+                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
+                    >
+                      <figure>
+                        <a href="item.html">
+                          <img
+                            src="./img/products/item_1.jpg"
+                            alt="item 1"
+                            width="230"
+                            height="230"
+                            class="w-full rounded-[0.625rem]"
+                            loading="lazy"
+                          />
+                        </a>
+                      </figure>
+                      <div class="mt-4 flex items-center justify-between">
+                        <a href="item.html">
+                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
+                            >ETH Me Outside</span
+                          >
+                        </a>
+                        
+                      </div>
+                      
+
+                      <div class="mt-8 flex items-center justify-between">
+                        <button
+                          type="button"
+                          class="text-accent font-display text-sm font-semibold"
+                          data-bs-toggle="modal"
+                          data-bs-target="#placeBidModal"
+                        >
+                          Place bid
+                        </button>
+
+                        <div class="flex items-center space-x-1">
+                          <span
+                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            data-tippy-content="Favorite"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
+                            >
+                              <path fill="none" d="M0 0H24V24H0z" />
+                              <path
+                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="dark:text-jacarta-200 text-sm">159</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide">
+                  <article>
+                    <div
+                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
+                    >
+                      <figure>
+                        <a href="item.html">
+                          <img
+                            src="./img/products/item_2.jpg"
+                            alt="item 2"
+                            width="230"
+                            height="230"
+                            class="w-full rounded-[0.625rem]"
+                            loading="lazy"
+                          />
+                        </a>
+                      </figure>
+                      <div class="mt-4 flex items-center justify-between">
+                        <a href="item.html">
+                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
+                            >Lazyone Panda</span
+                          >
+                        </a>
+                        
+                      </div>
+                      
+
+                      <div class="mt-8 flex items-center justify-between">
+                        <button
+                          type="button"
+                          class="text-accent font-display text-sm font-semibold"
+                          data-bs-toggle="modal"
+                          data-bs-target="#placeBidModal"
+                        >
+                          Place bid
+                        </button>
+                        <div class="flex items-center space-x-1">
+                          <span
+                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            data-tippy-content="Favorite"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
+                            >
+                              <path fill="none" d="M0 0H24V24H0z" />
+                              <path
+                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="dark:text-jacarta-200 text-sm">75</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide">
+                  <article>
+                    <div
+                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
+                    >
+                      <figure>
+                        <a href="item.html">
+                          <img
+                            src="./img/products/item_6.jpg"
+                            alt="item 6"
+                            width="230"
+                            height="230"
+                            class="w-full rounded-[0.625rem]"
+                            loading="lazy"
+                          />
+                        </a>
+                      </figure>
+                      <div class="mt-4 flex items-center justify-between">
+                        <a href="item.html">
+                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
+                            >Splendid Girl</span
+                          >
+                        </a>
+                        
+                      </div>
+                    
+
+                      <div class="mt-8 flex items-center justify-between">
+                        <button
+                          type="button"
+                          class="text-accent font-display text-sm font-semibold"
+                          data-bs-toggle="modal"
+                          data-bs-target="#placeBidModal"
+                        >
+                          Place bid
+                        </button>
+                        <div class="flex items-center space-x-1">
+                          <span
+                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            data-tippy-content="Favorite"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
+                            >
+                              <path fill="none" d="M0 0H24V24H0z" />
+                              <path
+                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="dark:text-jacarta-200 text-sm">253</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide">
+                  <article>
+                    <div
+                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
+                    >
+                      <figure>
+                        <a href="item.html">
+                          <img
+                            src="./img/products/item_4.jpg"
+                            alt="item 4"
+                            width="230"
+                            height="230"
+                            class="w-full rounded-[0.625rem]"
+                            loading="lazy"
+                          />
+                        </a>
+                      </figure>
+                      <div class="mt-4 flex items-center justify-between">
+                        <a href="item.html">
+                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
+                            >Amazing NFT art</span
+                          >
+                        </a>
+                        
+                      </div>
+                    
+
+                      <div class="mt-8 flex items-center justify-between">
+                        <button
+                          type="button"
+                          class="text-accent font-display text-sm font-semibold"
+                          data-bs-toggle="modal"
+                          data-bs-target="#placeBidModal"
+                        >
+                          Place bid
+                        </button>
+                        <div class="flex items-center space-x-1">
+                          <span
+                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            data-tippy-content="Favorite"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
+                            >
+                              <path fill="none" d="M0 0H24V24H0z" />
+                              <path
+                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="dark:text-jacarta-200 text-sm">324</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide">
+                  <article>
+                    <div
+                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
+                    >
+                      <figure class="relative">
+                        <a href="item.html">
+                          <img
+                            src="./img/pixel.jpg"
+                            data-src="./img/products/item_3.gif"
+                            alt="item 3"
+                            width="230"
+                            height="230"
+                            class="swiper-lazy w-full rounded-[0.625rem]"
+                          />
+                          <div class="swiper-lazy-preloader"></div>
+                        </a>
+                      </figure>
+                      <div class="mt-4 flex items-center justify-between">
+                        <a href="item.html">
+                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
+                            >Portrait Gallery</span
+                          >
+                        </a>
+                        
+                      </div>
+                    
+
+                      <div class="mt-8 flex items-center justify-between">
+                        <button
+                          type="button"
+                          class="text-accent font-display text-sm font-semibold"
+                          data-bs-toggle="modal"
+                          data-bs-target="#placeBidModal"
+                        >
+                          Place bid
+                        </button>
+                        <div class="flex items-center space-x-1">
+                          <span
+                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            data-tippy-content="Favorite"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
+                            >
+                              <path fill="none" d="M0 0H24V24H0z" />
+                              <path
+                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="dark:text-jacarta-200 text-sm">54</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide">
+                  <article>
+                    <div
+                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
+                    >
+                      <figure class="relative">
+                        <a href="item.html">
+                          <img
+                            src="./img/pixel.jpg"
+                            data-src="./img/products/item_5.jpg"
+                            alt="item 5"
+                            width="230"
+                            height="230"
+                            class="swiper-lazy w-full rounded-[0.625rem]"
+                          />
+                          <div class="swiper-lazy-preloader"></div>
+                        </a>
+                      </figure>
+                      <div class="mt-4 flex items-center justify-between">
+                        <a href="item.html">
+                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
+                            >Flourishing Cat #180</span
+                          >
+                        </a>
+                       
+                      </div>
+                  
+
+                      <div class="mt-8 flex items-center justify-between">
+                        <button
+                          type="button"
+                          class="text-accent font-display text-sm font-semibold"
+                          data-bs-toggle="modal"
+                          data-bs-target="#placeBidModal"
+                        >
+                          Place bid
+                        </button>
+                        <div class="flex items-center space-x-1">
+                          <span
+                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            data-tippy-content="Favorite"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
+                            >
+                              <path fill="none" d="M0 0H24V24H0z" />
+                              <path
+                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="dark:text-jacarta-200 text-sm">125</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slider Navigation -->
+            <div
+              class="group swiper-button-prev shadow-white-volume absolute top-1/2 -left-4 z-10 -mt-6 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white p-3 text-base sm:-left-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                class="fill-jacarta-700 group-hover:fill-accent"
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z" />
+              </svg>
+            </div>
+            <div
+              class="group swiper-button-next shadow-white-volume absolute top-1/2 -right-4 z-10 -mt-6 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white p-3 text-base sm:-right-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                class="fill-jacarta-700 group-hover:fill-accent"
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end hot bids -->
+
+      <!-- Process / Newsletter -->
+      <section class="dark:bg-jacarta-800 relative py-24">
+        <picture class="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+          <img src="img/gradient_light.jpg" alt="gradient" class="h-full" />
+        </picture>
+        <div class="container">
+          <h2 class="font-display text-jacarta-700 mb-16 text-center text-3xl dark:text-white">
+            Explore and Share Ideas
+          </h2>
+          <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+            <div class="text-center">
+              <div class="mb-6 inline-flex rounded-full bg-[#CDBCFF] p-3">
+                <div class="bg-accent inline-flex h-12 w-12 items-center justify-center rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    class="h-5 w-5 fill-white"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M22 6h-7a6 6 0 1 0 0 12h7v2a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2zm-7 2h8v8h-8a4 4 0 1 1 0-8zm0 3v2h3v-2h-3z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="font-display text-jacarta-700 mb-4 text-lg dark:text-white">1. Set up your Profile</h3>
+              <p class="dark:text-jacarta-300">
+                create an account and set your account profile.
+              </p>
+            </div>
+            <div class="text-center">
+              <div class="mb-6 inline-flex rounded-full bg-[#C4F2E3] p-3">
+                <div class="bg-green inline-flex h-12 w-12 items-center justify-center rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    class="h-5 w-5 fill-white"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="font-display text-jacarta-700 mb-4 text-lg dark:text-white">2. Create Your Collection</h3>
+              <p class="dark:text-jacarta-300">
+                Click Create and set up your collection. Add social links, a description, profile & banner images, and
+                set a secondary sales fee.
+              </p>
+            </div>
+            <div class="text-center">
+              <div class="mb-6 inline-flex rounded-full bg-[#CDDFFB] p-3">
+                <div class="bg-blue inline-flex h-12 w-12 items-center justify-center rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    class="h-5 w-5 fill-white"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M17.409 19c-.776-2.399-2.277-3.885-4.266-5.602A10.954 10.954 0 0 1 20 11V3h1.008c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H2.992A.993.993 0 0 1 2 20.007V3.993A1 1 0 0 1 2.992 3H6V1h2v4H4v7c5.22 0 9.662 2.462 11.313 7h2.096zM18 1v4h-8V3h6V1h2zm-1.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="font-display text-jacarta-700 mb-4 text-lg dark:text-white">3. Add Your NFTs</h3>
+              <p class="dark:text-jacarta-300">
+                Upload your work (image, video, audio, or 3D art), add a title and description, and customize your NFTs
+                with properties, stats.
+              </p>
+            </div>
+            <div class="text-center">
+              <div class="mb-6 inline-flex rounded-full bg-[#FFD0D0] p-3">
+                <div class="bg-red inline-flex h-12 w-12 items-center justify-center rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    class="h-5 w-5 fill-white"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M10.9 2.1l9.899 1.415 1.414 9.9-9.192 9.192a1 1 0 0 1-1.414 0l-9.9-9.9a1 1 0 0 1 0-1.414L10.9 2.1zm2.828 8.486a2 2 0 1 0 2.828-2.829 2 2 0 0 0-2.828 2.829z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="font-display text-jacarta-700 mb-4 text-lg dark:text-white">4. List Them For Sale</h3>
+              <p class="dark:text-jacarta-300">
+                Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to
+                sell your NFTs!
+              </p>
+            </div>
+          </div>
+
+          <p class="text-jacarta-700 mx-auto mt-20 max-w-2xl text-center text-lg dark:text-white">
+            Join our mailing list to stay in the loop with our newest feature releases, tips and tricks
+            for navigating Egaku
+          </p>
+
+          <div class="mx-auto mt-7 max-w-md text-center">
+            <form class="relative">
+              <input
+                type="email"
+                placeholder="Email address"
+                class="dark:bg-jacarta-700 dark:border-jacarta-600 focus:ring-accent border-jacarta-100 w-full rounded-full border py-3 px-4 dark:text-white dark:placeholder-white"
+              />
+              <button
+                class="hover:bg-accent-dark font-display bg-accent absolute top-2 right-2 rounded-full px-6 py-2 text-sm text-white"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- end process / newsletter -->
+    </main>
+
+    <!-- Wallet Modal -->
+    <div class="modal fade" id="walletModal" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
+      <div class="modal-dialog max-w-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="walletModalLabel">Connect your wallet</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                class="fill-jacarta-700 h-6 w-6 dark:fill-white"
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Body -->
+          <div class="modal-body p-6 text-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0"
+              y="0"
+              viewBox="0 0 318.6 318.6"
+              xml:space="preserve"
+              class="mb-4 inline-block h-8 w-8"
+            >
+              <style>
+                .st1,
+                .st6 {
+                  fill: #e4761b;
+                  stroke: #e4761b;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                }
+                .st6 {
+                  fill: #f6851b;
+                  stroke: #f6851b;
+                }
+              </style>
+              <path
+                fill="#e2761b"
+                stroke="#e2761b"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M274.1 35.5l-99.5 73.9L193 65.8z"
+              />
+              <path
+                class="st1"
+                d="M44.4 35.5l98.7 74.6-17.5-44.3zm193.9 171.3l-26.5 40.6 56.7 15.6 16.3-55.3zm-204.4.9L50.1 263l56.7-15.6-26.5-40.6z"
+              />
+              <path
+                class="st1"
+                d="M103.6 138.2l-15.8 23.9 56.3 2.5-2-60.5zm111.3 0l-39-34.8-1.3 61.2 56.2-2.5zM106.8 247.4l33.8-16.5-29.2-22.8zm71.1-16.5l33.9 16.5-4.7-39.3z"
+              />
+              <path
+                d="M211.8 247.4l-33.9-16.5 2.7 22.1-.3 9.3zm-105 0l31.5 14.9-.2-9.3 2.5-22.1z"
+                fill="#d7c1b3"
+                stroke="#d7c1b3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M138.8 193.5l-28.2-8.3 19.9-9.1zm40.9 0l8.3-17.4 20 9.1z"
+                fill="#233447"
+                stroke="#233447"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M106.8 247.4l4.8-40.6-31.3.9zM207 206.8l4.8 40.6 26.5-39.7zm23.8-44.7l-56.2 2.5 5.2 28.9 8.3-17.4 20 9.1zm-120.2 23.1l20-9.1 8.2 17.4 5.3-28.9-56.3-2.5z"
+                fill="#cd6116"
+                stroke="#cd6116"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M87.8 162.1l23.6 46-.8-22.9zm120.3 23.1l-1 22.9 23.7-46zm-64-20.6l-5.3 28.9 6.6 34.1 1.5-44.9zm30.5 0l-2.7 18 1.2 45 6.7-34.1z"
+                fill="#e4751f"
+                stroke="#e4751f"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                class="st6"
+                d="M179.8 193.5l-6.7 34.1 4.8 3.3 29.2-22.8 1-22.9zm-69.2-8.3l.8 22.9 29.2 22.8 4.8-3.3-6.6-34.1z"
+              />
+              <path
+                fill="#c0ad9e"
+                stroke="#c0ad9e"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M180.3 262.3l.3-9.3-2.5-2.2h-37.7l-2.3 2.2.2 9.3-31.5-14.9 11 9 22.3 15.5h38.3l22.4-15.5 11-9z"
+              />
+              <path
+                fill="#161616"
+                stroke="#161616"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M177.9 230.9l-4.8-3.3h-27.7l-4.8 3.3-2.5 22.1 2.3-2.2h37.7l2.5 2.2z"
+              />
+              <path
+                d="M278.3 114.2l8.5-40.8-12.7-37.9-96.2 71.4 37 31.3 52.3 15.3 11.6-13.5-5-3.6 8-7.3-6.2-4.8 8-6.1zM31.8 73.4l8.5 40.8-5.4 4 8 6.1-6.1 4.8 8 7.3-5 3.6 11.5 13.5 52.3-15.3 37-31.3-96.2-71.4z"
+                fill="#763d16"
+                stroke="#763d16"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                class="st6"
+                d="M267.2 153.5l-52.3-15.3 15.9 23.9-23.7 46 31.2-.4h46.5zm-163.6-15.3l-52.3 15.3-17.4 54.2h46.4l31.1.4-23.6-46zm71 26.4l3.3-57.7 15.2-41.1h-67.5l15 41.1 3.5 57.7 1.2 18.2.1 44.8h27.7l.2-44.8z"
+              />
+            </svg>
+            <p class="text-center dark:text-white">
+              You don't have MetaMask in your browser, please download it from
+              <a href="https://metamask.io/" class="text-accent" target="_blank" rel="noreferrer noopener">MetaMask</a>
+            </p>
+          </div>
+          <!-- end body -->
+
+          <div class="modal-footer">
+            <div class="flex items-center justify-center space-x-4">
+              <a
+                href="https://metamask.io/"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="bg-accent shadow-accent-volume hover:bg-accent-dark rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+              >
+                Get Metamask
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buy Now Modal -->
+    <div class="modal fade" id="buyNowModal" tabindex="-1" aria-labelledby="buyNowModalLabel" aria-hidden="true">
+      <div class="modal-dialog max-w-2xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="buyNowModalLabel">Complete checkout</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                class="fill-jacarta-700 h-6 w-6 dark:fill-white"
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Body -->
+          <div class="modal-body p-6">
+            <div class="mb-2 flex items-center justify-between">
+              <span class="font-display text-jacarta-700 text-sm font-semibold dark:text-white">Item</span>
+              <span class="font-display text-jacarta-700 text-sm font-semibold dark:text-white">Subtotal</span>
+            </div>
+
+            <div class="dark:border-jacarta-600 border-jacarta-100 relative flex items-center border-t border-b py-4">
+              <figure class="mr-5 self-start">
+                <img src="img/avatars/avatar_2.jpg" alt="avatar 2" class="rounded-2lg" loading="lazy" />
+              </figure>
+
+              <div>
+                <a href="collection.html" class="text-accent text-sm">Elon Musk #709</a>
+                <h3 class="font-display text-jacarta-700 mb-1 text-base font-semibold dark:text-white">
+                  Lazyone Panda
+                </h3>
+                <div class="flex flex-wrap items-center">
+                  <span class="dark:text-jacarta-300 text-jacarta-500 mr-1 block text-sm">Creator Earnings: 5%</span>
+                  <span
+                    data-tippy-content="The creator of this collection will receive 5% of the sale total from future sales of this item."
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      class="dark:fill-jacarta-300 fill-jacarta-700 h-4 w-4"
+                    >
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path
+                        d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="ml-auto">
+                <span class="mb-1 flex items-center whitespace-nowrap">
+                  <span data-tippy-content="ETH">
+                    <svg
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0"
+                      y="0"
+                      viewBox="0 0 1920 1920"
+                      xml:space="preserve"
+                      class="h-4 w-4"
+                    >
+                      <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z"></path>
+                      <path fill="#62688F" d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"></path>
+                      <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z"></path>
+                      <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z"></path>
+                      <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
+                    </svg>
+                  </span>
+                  <span class="dark:text-jacarta-100 text-sm font-medium tracking-tight">1.55 ETH</span>
+                </span>
+                <div class="dark:text-jacarta-300 text-right text-sm">$130.82</div>
+              </div>
+            </div>
+
+            <!-- Total -->
+            <div
+              class="dark:border-jacarta-600 border-jacarta-100 mb-2 flex items-center justify-between border-b py-2.5"
+            >
+              <span class="font-display text-jacarta-700 hover:text-accent font-semibold dark:text-white">Total</span>
+              <div class="ml-auto">
+                <span class="flex items-center whitespace-nowrap">
+                  <span data-tippy-content="ETH">
+                    <svg
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0"
+                      y="0"
+                      viewBox="0 0 1920 1920"
+                      xml:space="preserve"
+                      class="h-4 w-4"
+                    >
+                      <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z"></path>
+                      <path fill="#62688F" d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"></path>
+                      <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z"></path>
+                      <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z"></path>
+                      <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
+                    </svg>
+                  </span>
+                  <span class="text-green font-medium tracking-tight">1.55 ETH</span>
+                </span>
+                <div class="dark:text-jacarta-300 text-right">$130.82</div>
+              </div>
+            </div>
+
+            <!-- Terms -->
+            <div class="mt-4 flex items-center space-x-2">
+              <input
+                type="checkbox"
+                id="buyNowTerms"
+                class="checked:bg-accent dark:bg-jacarta-600 text-accent border-jacarta-200 focus:ring-accent/20 dark:border-jacarta-500 h-5 w-5 self-start rounded focus:ring-offset-0"
+              />
+              <label for="buyNowTerms" class="dark:text-jacarta-200 text-sm"
+                >By checking this box, I agree to Egaku's <a href="#" class="text-accent">Terms of Service</a></label
+              >
+            </div>
+          </div>
+          <!-- end body -->
+
+          <div class="modal-footer">
+            <div class="flex items-center justify-center space-x-4">
+              <button
+                type="button"
+                class="bg-accent shadow-accent-volume hover:bg-accent-dark rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+              >
+                Confirm Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    @endsection
