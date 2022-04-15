@@ -5,8 +5,8 @@
           <div class="col-span-3 md:col-span-4">
             <!-- Logo -->
             <a href="index.html" class="mb-6 inline-block">
-              <img src="img/logo.png" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
-              <img src="img/logo_white.png" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
+              <img src="{{asset('img/logo.png')}}" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
+              <img src="{{asset('img/logo_white.png')}}" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
             </a>
             <p class="dark:text-jacarta-300 mb-12">
               Create, upload and explore big ideas in visual form. Get and save ideas for you

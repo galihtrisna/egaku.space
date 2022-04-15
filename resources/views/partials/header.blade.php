@@ -3,8 +3,8 @@
       <div class="flex items-center px-6 py-6 xl:px-24">
         <!-- Logo -->
         <a href="index.html" class="shrink-0">
-          <img src="img/logo.png" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
-          <img src="img/logo_white.png" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
+          <img src="{{asset('img/logo.png')}}" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
+          <img src="{{asset('img/logo_white.png')}}" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
         </a>
 
         <!-- Search -->
@@ -40,8 +40,8 @@
           >
             <!-- Mobile Logo -->
             <a href="index.html" class="shrink-0">
-              <img src="img/logo.png" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
-              <img src="img/logo_white.png" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
+              <img src="{{asset('img/logo.png')}}" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
+              <img src="{{asset('img/logo_white.png')}}" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
             </a>
 
             <!-- Mobile Menu Close -->
@@ -385,9 +385,9 @@
               </li>
               <li class="group">
                 <a
-                  href="create.html"
+                  href="{{ route('share') }}"
                   class="text-jacarta-700 font-display hover:text-accent focus:text-accent dark:hover:text-accent dark:focus:text-accent flex items-center justify-between py-3.5 text-base dark:text-white lg:px-5"
-                  >Create</a
+                  >Share</a
                 >
               </li>
               <li class="group">

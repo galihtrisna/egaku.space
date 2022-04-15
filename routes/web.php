@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ShareController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/share', [App\Http\Controllers\HomeController::class, 'share'])->name('share');
     Route::post('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout'); 
+
+    Route::get('explore', [App\Http\Controllers\shareController::class, 'index'])->name('explore');
+    Route::get('share/tambah', [App\Http\Controllers\shareController::class, 'tambahshare'])->name('tambahshare');
+    Route::post('share/simpan', [App\Http\Controllers\shareController::class, 'simpanshare'])->name('simpanshare');
+
 });

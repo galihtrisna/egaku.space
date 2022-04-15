@@ -26,6 +26,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function explore()
+    {
+        return view('explore');
+    }
+    public function share()
+    {
+        return view('share');
+    }
 
     public function logout(Request $request)
     {

@@ -3,8 +3,8 @@
       <div class="flex items-center px-6 py-6 xl:px-24">
         <!-- Logo -->
         <a href="index.html" class="shrink-0">
-          <img src="img/logo.png" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
-          <img src="img/logo_white.png" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
+          <img src="{{asset('img/logo.png')}}" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
+          <img src="{{asset('img/logo_white.png')}}" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
         </a>
 
         <!-- Search -->
@@ -40,8 +40,8 @@
           >
             <!-- Mobile Logo -->
             <a href="index.html" class="shrink-0">
-              <img src="img/logo.png" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
-              <img src="img/logo_white.png" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
+              <img src="{{asset('img/logo.png')}}" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
+              <img src="{{asset('img/logo_white.png')}}" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
             </a>
 
             <!-- Mobile Menu Close -->
@@ -90,33 +90,18 @@
           <!-- Primary Nav -->
           <nav class="navbar w-full">
             <ul class="flex flex-col lg:flex-row">
-              <li class="js-nav-dropdown group relative">
+              <li class="group">
                 <a
-                  href="#"
-                  class="dropdown-toggle text-jacarta-700 font-display hover:text-accent focus:text-accent dark:hover:text-accent dark:focus:text-accent flex items-center justify-between py-3.5 text-base dark:text-white lg:px-5"
-                  id="navDropdown-1"
-                  aria-expanded="false"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  >Home
-                  <i class="lg:hidden">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                      class="h-4 w-4 dark:fill-white"
-                    >
-                      <path fill="none" d="M0 0h24v24H0z" />
-                      <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
-                    </svg>
-                  </i>
-                </a>
+                  href="{{route('home')}}"
+                  class="text-jacarta-700 font-display hover:text-accent focus:text-accent dark:hover:text-accent dark:focus:text-accent flex items-center justify-between py-3.5 text-base dark:text-white lg:px-5"
+                  >Home</a
+                >
+              </li>
                 
               </li>
               <li class="js-nav-dropdown nav-item dropdown group relative">
                 <a
-                  href="collections.html"
+                  href="#"
                   class="dropdown-toggle text-jacarta-700 font-display hover:text-accent focus:text-accent dark:hover:text-accent dark:focus:text-accent flex items-center justify-between py-3.5 text-base dark:text-white lg:px-5"
                   id="navDropdown-3"
                   aria-expanded="false"
@@ -142,7 +127,7 @@
                 >
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="bg-light-base mr-3 rounded-xl p-[0.375rem]">
@@ -360,34 +345,18 @@
                   </li>
                 </ul>
               </li>
-              <li class="js-nav-dropdown group relative">
+              <li class="group">
                 <a
-                  href="#"
-                  class="dropdown-toggle text-jacarta-700 font-display hover:text-accent focus:text-accent dark:hover:text-accent dark:focus:text-accent flex items-center justify-between py-3.5 text-base dark:text-white lg:px-5"
-                  id="navDropdown-4"
-                  aria-expanded="false"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  >Blog
-                  <i class="lg:hidden">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                      class="h-4 w-4 dark:fill-white"
-                    >
-                      <path fill="none" d="M0 0h24v24H0z" />
-                      <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
-                    </svg>
-                  </i>
-                </a>
+                  href="blog.html"
+                  class="text-jacarta-700 font-display hover:text-accent focus:text-accent dark:hover:text-accent dark:focus:text-accent flex items-center justify-between py-3.5 text-base dark:text-white lg:px-5"
+                  >Blog</a
+                >
               </li>
               <li class="group">
                 <a
-                  href="create.html"
+                  href="{{route('share')}}"
                   class="text-jacarta-700 font-display hover:text-accent focus:text-accent dark:hover:text-accent dark:focus:text-accent flex items-center justify-between py-3.5 text-base dark:text-white lg:px-5"
-                  >Create</a
+                  >Share</a
                 >
               </li>
             </ul>
