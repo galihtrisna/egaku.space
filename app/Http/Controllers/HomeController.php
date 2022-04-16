@@ -35,6 +35,11 @@ class HomeController extends Controller
         return view('share');
     }
 
+    public function item()
+    {
+        return view('item');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

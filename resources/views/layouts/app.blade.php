@@ -18,6 +18,7 @@
 </head>
 
 <body
+    oncontextmenu="return false"
     class="dark:bg-jacarta-900 font-body text-jacarta-500 overflow-x-hidden"
     itemscope
     itemtype="http://schema.org/WebPage"

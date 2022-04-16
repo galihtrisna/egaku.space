@@ -14,10 +14,25 @@ class ShareController extends Controller
         return view('explore', compact('shares'));
     }
 
+    public function item($id)
+    {
+        $data = Share::find($id);
+
+        return view('item', compact('data'));
+    }
+
+    public function download($id)
+    {
+        $data = Share::find($id);
+
+        return response()->download('share_image/'.$data->file);
+    }
+
     public function tambahshare()
     {
         return view('tambahshare');
     }
+
 
     public function simpanshare(Request $request)
     {
