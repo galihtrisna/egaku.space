@@ -8,11 +8,13 @@
         </a>
 
         <!-- Search -->
-        <form action="search" class="relative ml-12 mr-8 hidden basis-3/12 lg:block xl:ml-[8%]">
+        <form action="{{route('search')}}" class="relative ml-12 mr-8 hidden basis-3/12 lg:block xl:ml-[8%]" method="GET">
           <input
+          name="search"
             type="search"
             class="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full rounded-2xl border py-[0.6875rem] px-4 pl-10 dark:border-transparent dark:bg-white/[.15] dark:text-white dark:placeholder-white"
             placeholder="Search"
+            value="{{old('search')}}"
           />
           <span class="absolute left-0 top-0 flex h-full w-12 items-center justify-center rounded-2xl">
             <svg

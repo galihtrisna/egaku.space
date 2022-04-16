@@ -33,4 +33,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/share/simpan', [App\Http\Controllers\shareController::class, 'simpanshare'])->name('simpanshare');
     Route::get('/explore/item/{id}', [App\Http\Controllers\shareController::class, 'item'])->name('item');
     Route::get('/explore/item/download/{id}', [App\Http\Controllers\shareController::class, 'download'])->name('download');
+
+    Route::get('/explore/search', [App\Http\Controllers\shareController::class, 'search'])->name('search');
 });

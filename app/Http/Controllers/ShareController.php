@@ -14,6 +14,13 @@ class ShareController extends Controller
         return view('explore', compact('shares'));
     }
 
+    public function search(Request $request)
+    {
+        $shares = Share::where('Name', 'LIKE', '%'.$request->search.'%')->get();
+     
+        return view('explore', compact('shares'));
+    }
+
     public function item($id)
     {
         $data = Share::find($id);
