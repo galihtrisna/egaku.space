@@ -2,7 +2,7 @@
     <header class="js-page-header fixed top-0 z-20 w-full backdrop-blur transition-colors">
       <div class="flex items-center px-6 py-6 xl:px-24">
         <!-- Logo -->
-        <a href="index.html" class="shrink-0">
+        <a href="{{route('home')}}" class="shrink-0">
           <img src="{{asset('img/logo.png')}}" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
           <img src="{{asset('img/logo_white.png')}}" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
         </a>
@@ -39,7 +39,7 @@
             class="t-0 dark:bg-jacarta-800 fixed left-0 z-10 flex w-full items-center justify-between bg-white p-6 lg:hidden"
           >
             <!-- Mobile Logo -->
-            <a href="index.html" class="shrink-0">
+            <a href="{{route('home')}}" class="shrink-0">
               <img src="{{asset('img/logo.png')}}" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
               <img src="{{asset('img/logo_white.png')}}" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
             </a>
@@ -92,7 +92,7 @@
             <ul class="flex flex-col lg:flex-row">
               <li class="js-nav-dropdown group relative">
                 <a
-                  href="#"
+                  href="{{route('home')}}"
                   class="dropdown-toggle text-jacarta-700 font-display hover:text-accent focus:text-accent dark:hover:text-accent dark:focus:text-accent flex items-center justify-between py-3.5 text-base dark:text-white lg:px-5"
                   id="navDropdown-1"
                   aria-expanded="false"
@@ -116,7 +116,7 @@
               </li>
               <li class="js-nav-dropdown nav-item dropdown group relative">
                 <a
-                  href="collections.html"
+                  href="{{route('explore')}}"
                   class="dropdown-toggle text-jacarta-700 font-display hover:text-accent focus:text-accent dark:hover:text-accent dark:focus:text-accent flex items-center justify-between py-3.5 text-base dark:text-white lg:px-5"
                   id="navDropdown-3"
                   aria-expanded="false"
@@ -142,7 +142,7 @@
                 >
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="bg-light-base mr-3 rounded-xl p-[0.375rem]">

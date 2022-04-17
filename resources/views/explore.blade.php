@@ -253,9 +253,9 @@
       //# sourceURL=pen.js
     </script>
 
-          <div class="columns-4 gap-3 w-[100px] mx-auto space-y-3 pb-28" style="column-width: 10em;">
+          <div class="columns-4 gap-3 w-[100px] mx-auto space-y-3 pb-28" style="column-width: 10em;">,
               @foreach($shares as $index => $share) 
-              <div onclick="location.href='item/{{$share['id']}}'" class="explore"style="cursor: pointer; background-image: url('{{asset('share_image/'.$share->file)}}')"></div>
+              <div onclick="location.href='{{route('item', ['id'=>$share])}}'" class="explore"style="cursor: pointer; background-image: url('{{asset('share_image/'.$share->file)}}')"></div>
               @endforeach
           </div>
         </div>

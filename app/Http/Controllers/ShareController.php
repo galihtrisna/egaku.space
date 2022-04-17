@@ -16,7 +16,7 @@ class ShareController extends Controller
 
     public function search(Request $request)
     {
-        $shares = Share::where('Name', 'LIKE', '%'.$request->search.'%')->get();
+        $shares = Share::where('Name', 'LIKE', '%'.$request->search.'%')->orWhere('Description', 'LIKE', '%'.$request->search.'%')->get();
      
         return view('explore', compact('shares'));
     }
