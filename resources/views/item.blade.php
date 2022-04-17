@@ -14,7 +14,7 @@
             <figure class="mb-8 md:w-2/5 md:flex-shrink-0 md:flex-grow-0 md:basis-auto lg:w-1/2">
               <img
                 src="{{asset('share_image/'.$data->file)}}"
-                alt="item"
+                alt="{{$data->Name}}"
                 class="cursor-pointer rounded-[1.25rem]"
                 data-bs-toggle="modal"
                 data-bs-target="#imageModal"
@@ -29,7 +29,7 @@
                 aria-hidden="true"
               >
                 <div class="modal-dialog !my-0 flex h-full items-center justify-center p-4">
-                  <img src="{{asset('share_image/'.$data->file)}}" alt="item" />
+                  <img src="{{asset('share_image/'.$data->file)}}" alt="{{$data->Name}}" />
                 </div>
 
                 <button
@@ -1170,26 +1170,32 @@
       <section class="dark:bg-jacarta-800 bg-light-base py-24">
         <div class="container">
           <h2 class="font-display text-jacarta-700 mb-8 text-center text-3xl dark:text-white">
-            More from this collection
+            More from {{$data->Name_of_user}}
           </h2>
-
+          <input
+          name="Email_of_user"
+            type="hidden"
+            value="{{$data->Email_of_user}}"
+          />
           <div class="relative">
             <!-- Slider -->
             <div class="swiper card-slider-4-columns !py-5">
               <div class="swiper-wrapper">
                 <!-- Slides -->
+                @foreach($itemuser as $item => $value)
                 <div class="swiper-slide">
                   <article>
                     <div
                       class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
                     >
                       <figure>
-                        <a href="item.html">
+                        <a href="{{route('item', ['id'=>$value], ['Email_of_user'=>$value])}}">
                           <img
-                            src="./img/products/item_1.jpg"
-                            alt="item 1"
+                            src="{{asset('share_image/'.$value->file)}}"
+                            alt="{{$value->file}}"
                             width="230"
                             height="230"
+                            style="width: 230px; height: 230px; object-fit: contain;"
                             class="w-full rounded-[0.625rem]"
                             loading="lazy"
                           />
@@ -1198,511 +1204,27 @@
                       <div class="mt-4 flex items-center justify-between">
                         <a href="item.html">
                           <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >ETH Me Outside</span
+                            >{{$value->Name}}</span
                           >
                         </a>
-                        <span
-                          class="dark:border-jacarta-600 border-jacarta-100 flex items-center whitespace-nowrap rounded-md border py-1 px-2"
-                        >
-                          <span data-tippy-content="ETH">
-                            <svg
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 1920 1920"
-                              xml:space="preserve"
-                              class="h-4 w-4"
-                            >
-                              <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
-                              <path
-                                fill="#62688F"
-                                d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"
-                              />
-                              <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z" />
-                              <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z" />
-                              <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
-                            </svg>
-                          </span>
-                          <span class="text-green text-sm font-medium tracking-tight">1.55 ETH</span>
-                        </span>
                       </div>
                       <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="dark:text-jacarta-100 text-jacarta-700">1.3 ETH</span>
+                        <span class="dark:text-jacarta-300">Published on </span>
+                        <span class="dark:text-jacarta-100 text-jacarta-700">{{$value->created_at->format('M d, Y')}}</span>
                       </div>
 
                       <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
+                        <a
                           class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
+                          href="{{route('item', ['id'=>$value], ['Email_of_user'=>$value])}}"
                         >
-                          Place bid
-                        </button>
-
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">159</span>
-                        </div>
+                          Detail
+                        </a>
                       </div>
                     </div>
                   </article>
                 </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure>
-                        <a href="item.html">
-                          <img
-                            src="./img/products/item_2.jpg"
-                            alt="item 2"
-                            width="230"
-                            height="230"
-                            class="w-full rounded-[0.625rem]"
-                            loading="lazy"
-                          />
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Lazyone Panda</span
-                          >
-                        </a>
-                        <span
-                          class="dark:border-jacarta-600 border-jacarta-100 flex items-center whitespace-nowrap rounded-md border py-1 px-2"
-                        >
-                          <span data-tippy-content="ETH">
-                            <svg
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 1920 1920"
-                              xml:space="preserve"
-                              class="h-4 w-4"
-                            >
-                              <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
-                              <path
-                                fill="#62688F"
-                                d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"
-                              />
-                              <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z" />
-                              <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z" />
-                              <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
-                            </svg>
-                          </span>
-                          <span class="text-green text-sm font-medium tracking-tight">2 ETH</span>
-                        </span>
-                      </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="dark:text-jacarta-100 text-jacarta-700">0.001 ETH</span>
-                      </div>
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">75</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure>
-                        <a href="item.html">
-                          <img
-                            src="./img/products/item_6.jpg"
-                            alt="item 6"
-                            width="230"
-                            height="230"
-                            class="w-full rounded-[0.625rem]"
-                            loading="lazy"
-                          />
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Splendid Girl</span
-                          >
-                        </a>
-                        <span
-                          class="dark:border-jacarta-600 border-jacarta-100 flex items-center whitespace-nowrap rounded-md border py-1 px-2"
-                        >
-                          <span data-tippy-content="ETH">
-                            <svg
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 1920 1920"
-                              xml:space="preserve"
-                              class="h-4 w-4"
-                            >
-                              <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
-                              <path
-                                fill="#62688F"
-                                d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"
-                              />
-                              <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z" />
-                              <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z" />
-                              <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
-                            </svg>
-                          </span>
-                          <span class="text-green text-sm font-medium tracking-tight">5.1 ETH</span>
-                        </span>
-                      </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="dark:text-jacarta-100 text-jacarta-700">4.7 ETH</span>
-                      </div>
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">253</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure>
-                        <a href="item.html">
-                          <img
-                            src="./img/products/item_4.jpg"
-                            alt="item 4"
-                            width="230"
-                            height="230"
-                            class="w-full rounded-[0.625rem]"
-                            loading="lazy"
-                          />
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Amazing NFT art</span
-                          >
-                        </a>
-                        <span
-                          class="dark:border-jacarta-600 border-jacarta-100 flex items-center whitespace-nowrap rounded-md border py-1 px-2"
-                        >
-                          <span data-tippy-content="ETH">
-                            <svg
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 1920 1920"
-                              xml:space="preserve"
-                              class="h-4 w-4"
-                            >
-                              <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
-                              <path
-                                fill="#62688F"
-                                d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"
-                              />
-                              <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z" />
-                              <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z" />
-                              <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
-                            </svg>
-                          </span>
-                          <span class="text-green text-sm font-medium tracking-tight">7 ETH</span>
-                        </span>
-                      </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="dark:text-jacarta-100 text-jacarta-700">1.2 ETH</span>
-                      </div>
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">324</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure class="relative">
-                        <a href="item.html">
-                          <img
-                            src="./img/pixel.jpg"
-                            data-src="./img/products/item_3.gif"
-                            alt="item 3"
-                            width="230"
-                            height="230"
-                            class="swiper-lazy w-full rounded-[0.625rem]"
-                          />
-                          <div class="swiper-lazy-preloader"></div>
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Portrait Gallery</span
-                          >
-                        </a>
-                        <span
-                          class="dark:border-jacarta-600 border-jacarta-100 flex items-center whitespace-nowrap rounded-md border py-1 px-2"
-                        >
-                          <span data-tippy-content="ETH">
-                            <svg
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 1920 1920"
-                              xml:space="preserve"
-                              class="h-4 w-4"
-                            >
-                              <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
-                              <path
-                                fill="#62688F"
-                                d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"
-                              />
-                              <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z" />
-                              <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z" />
-                              <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
-                            </svg>
-                          </span>
-                          <span class="text-green text-sm font-medium tracking-tight">0.7 ETH</span>
-                        </span>
-                      </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="dark:text-jacarta-100 text-jacarta-700">0.05 ETH</span>
-                      </div>
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">54</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure class="relative">
-                        <a href="item.html">
-                          <img
-                            src="./img/pixel.jpg"
-                            data-src="./img/products/item_5.jpg"
-                            alt="item 5"
-                            width="230"
-                            height="230"
-                            class="swiper-lazy w-full rounded-[0.625rem]"
-                          />
-                          <div class="swiper-lazy-preloader"></div>
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Flourishing Cat #180</span
-                          >
-                        </a>
-                        <span
-                          class="dark:border-jacarta-600 border-jacarta-100 flex items-center whitespace-nowrap rounded-md border py-1 px-2"
-                        >
-                          <span data-tippy-content="ETH">
-                            <svg
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 1920 1920"
-                              xml:space="preserve"
-                              class="h-4 w-4"
-                            >
-                              <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
-                              <path
-                                fill="#62688F"
-                                d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"
-                              />
-                              <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z" />
-                              <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z" />
-                              <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
-                            </svg>
-                          </span>
-                          <span class="text-green text-sm font-medium tracking-tight">3 ETH</span>
-                        </span>
-                      </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="dark:text-jacarta-100 text-jacarta-700">0.25 ETH</span>
-                      </div>
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">125</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
+                @endforeach
               </div>
             </div>
 

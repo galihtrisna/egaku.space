@@ -24,8 +24,10 @@ class ShareController extends Controller
     public function item($id)
     {
         $data = Share::find($id);
+        $email = $data->Email_of_user;
+        $itemuser = Share::where('Email_of_user', $email)->inRandomOrder()->limit(6)->get();
 
-        return view('item', compact('data'));
+        return view('item', compact('data', 'itemuser'));
     }
 
     public function download($id)
