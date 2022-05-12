@@ -25,9 +25,13 @@ class ShareController extends Controller
     {
         $data = Share::find($id);
         $email = $data->Email_of_user;
+        $name = $data->Name;
         $itemuser = Share::where('Email_of_user', $email)->inRandomOrder()->limit(6)->get();
+        $history = Share::select('users.name','download_history.created_at')->from('download_history')->join('users', 'download_history.id_user', '=', 'users.id')->where('download_history.id_image', $id)->get();
 
-        return view('item', compact('data', 'itemuser'));
+       //return response()->json($history);
+
+       return view('item', compact('data', 'itemuser', 'history'));
     }
 
     public function download($id)

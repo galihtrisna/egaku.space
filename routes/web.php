@@ -26,13 +26,15 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/share', [App\Http\Controllers\HomeController::class, 'share'])->name('share');
-    Route::post('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout'); 
+    Route::post('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
+    Route::get('/profile', function(){return view ('profile');})->name('profile'); 
 
     Route::get('/explore', [App\Http\Controllers\shareController::class, 'index'])->name('explore');
     Route::get('/share/tambah', [App\Http\Controllers\shareController::class, 'tambahshare'])->name('tambahshare');
     Route::post('/share/simpan', [App\Http\Controllers\shareController::class, 'simpanshare'])->name('simpanshare');
     Route::get('/explore/item/{id}', [App\Http\Controllers\shareController::class, 'item'])->name('item');
     Route::get('/explore/item/download/{id}', [App\Http\Controllers\shareController::class, 'download'])->name('download');
+    Route::post('/explore/item/download/history', [App\Http\Controllers\DownloadHistoryController::class, 'download_history_item'])->name('download_history_item');
 
     Route::get('/explore/search', [App\Http\Controllers\shareController::class, 'search'])->name('search');
 });
