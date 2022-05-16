@@ -93,27 +93,27 @@
             <div class="swiper card-slider-4-columns !py-5">
               <div class="swiper-wrapper">
                 <!-- Slides -->
+                @foreach($post as $popular => $value)
                 <div class="swiper-slide">
                   <article>
                     <div
                       class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
                     >
                       <figure>
-                        <a href="item.html">
+                        <a href="{{route('item', ['id'=>$value])}}">
                           <img
-                            src="./img/products/item_1.jpg"
-                            alt="item 1"
-                            width="230"
-                            height="230"
+                            src="{{asset('share_image/'.$value->file)}}"
+                            alt="{{$value->Name}} - {{$value->Description}}"
+                            style="width: 230px; height: 230px; object-fit: contain;"
                             class="w-full rounded-[0.625rem]"
                             loading="lazy"
                           />
                         </a>
                       </figure>
                       <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
+                        <a href="{{route('item', ['id'=>$value])}}">
                           <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >ETH Me Outside</span
+                            >{{$value->Name}}</span
                           >
                         </a>
                         
@@ -127,335 +127,13 @@
                           data-bs-toggle="modal"
                           data-bs-target="#placeBidModal"
                         >
-                          Place bid
+                          {{$value->Name_of_user}}
                         </button>
-
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">159</span>
-                        </div>
                       </div>
                     </div>
                   </article>
                 </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure>
-                        <a href="item.html">
-                          <img
-                            src="./img/products/item_2.jpg"
-                            alt="item 2"
-                            width="230"
-                            height="230"
-                            class="w-full rounded-[0.625rem]"
-                            loading="lazy"
-                          />
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Lazyone Panda</span
-                          >
-                        </a>
-                        
-                      </div>
-                      
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">75</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure>
-                        <a href="item.html">
-                          <img
-                            src="./img/products/item_6.jpg"
-                            alt="item 6"
-                            width="230"
-                            height="230"
-                            class="w-full rounded-[0.625rem]"
-                            loading="lazy"
-                          />
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Splendid Girl</span
-                          >
-                        </a>
-                        
-                      </div>
-                    
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">253</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure>
-                        <a href="item.html">
-                          <img
-                            src="./img/products/item_4.jpg"
-                            alt="item 4"
-                            width="230"
-                            height="230"
-                            class="w-full rounded-[0.625rem]"
-                            loading="lazy"
-                          />
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Amazing NFT art</span
-                          >
-                        </a>
-                        
-                      </div>
-                    
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">324</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure class="relative">
-                        <a href="item.html">
-                          <img
-                            src="./img/pixel.jpg"
-                            data-src="./img/products/item_3.gif"
-                            alt="item 3"
-                            width="230"
-                            height="230"
-                            class="swiper-lazy w-full rounded-[0.625rem]"
-                          />
-                          <div class="swiper-lazy-preloader"></div>
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Portrait Gallery</span
-                          >
-                        </a>
-                        
-                      </div>
-                    
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">54</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article>
-                    <div
-                      class="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 block rounded-[1.25rem] border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg"
-                    >
-                      <figure class="relative">
-                        <a href="item.html">
-                          <img
-                            src="./img/pixel.jpg"
-                            data-src="./img/products/item_5.jpg"
-                            alt="item 5"
-                            width="230"
-                            height="230"
-                            class="swiper-lazy w-full rounded-[0.625rem]"
-                          />
-                          <div class="swiper-lazy-preloader"></div>
-                        </a>
-                      </figure>
-                      <div class="mt-4 flex items-center justify-between">
-                        <a href="item.html">
-                          <span class="font-display text-jacarta-700 hover:text-accent text-base dark:text-white"
-                            >Flourishing Cat #180</span
-                          >
-                        </a>
-                       
-                      </div>
-                  
-
-                      <div class="mt-8 flex items-center justify-between">
-                        <button
-                          type="button"
-                          class="text-accent font-display text-sm font-semibold"
-                          data-bs-toggle="modal"
-                          data-bs-target="#placeBidModal"
-                        >
-                          Place bid
-                        </button>
-                        <div class="flex items-center space-x-1">
-                          <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
-                            data-tippy-content="Favorite"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              class="dark:fill-jacarta-200 fill-jacarta-500 hover:fill-red dark:hover:fill-red h-4 w-4"
-                            >
-                              <path fill="none" d="M0 0H24V24H0z" />
-                              <path
-                                d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z"
-                              />
-                            </svg>
-                          </span>
-                          <span class="dark:text-jacarta-200 text-sm">125</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
+                @endforeach
               </div>
             </div>
 
@@ -502,98 +180,7 @@
           <h2 class="font-display text-jacarta-700 mb-16 text-center text-3xl dark:text-white">
             Explore and Share Ideas
           </h2>
-          <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-            <div class="text-center">
-              <div class="mb-6 inline-flex rounded-full bg-[#CDBCFF] p-3">
-                <div class="bg-accent inline-flex h-12 w-12 items-center justify-center rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    class="h-5 w-5 fill-white"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path
-                      d="M22 6h-7a6 6 0 1 0 0 12h7v2a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2zm-7 2h8v8h-8a4 4 0 1 1 0-8zm0 3v2h3v-2h-3z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <h3 class="font-display text-jacarta-700 mb-4 text-lg dark:text-white">1. Set up your Profile</h3>
-              <p class="dark:text-jacarta-300">
-                create an account and set your account profile.
-              </p>
-            </div>
-            <div class="text-center">
-              <div class="mb-6 inline-flex rounded-full bg-[#C4F2E3] p-3">
-                <div class="bg-green inline-flex h-12 w-12 items-center justify-center rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    class="h-5 w-5 fill-white"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 class="font-display text-jacarta-700 mb-4 text-lg dark:text-white">2. Create Your Collection</h3>
-              <p class="dark:text-jacarta-300">
-                Click Create and set up your collection. Add social links, a description, profile & banner images, and
-                set a secondary sales fee.
-              </p>
-            </div>
-            <div class="text-center">
-              <div class="mb-6 inline-flex rounded-full bg-[#CDDFFB] p-3">
-                <div class="bg-blue inline-flex h-12 w-12 items-center justify-center rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    class="h-5 w-5 fill-white"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path
-                      d="M17.409 19c-.776-2.399-2.277-3.885-4.266-5.602A10.954 10.954 0 0 1 20 11V3h1.008c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H2.992A.993.993 0 0 1 2 20.007V3.993A1 1 0 0 1 2.992 3H6V1h2v4H4v7c5.22 0 9.662 2.462 11.313 7h2.096zM18 1v4h-8V3h6V1h2zm-1.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <h3 class="font-display text-jacarta-700 mb-4 text-lg dark:text-white">3. Add Your NFTs</h3>
-              <p class="dark:text-jacarta-300">
-                Upload your work (image, video, audio, or 3D art), add a title and description, and customize your NFTs
-                with properties, stats.
-              </p>
-            </div>
-            <div class="text-center">
-              <div class="mb-6 inline-flex rounded-full bg-[#FFD0D0] p-3">
-                <div class="bg-red inline-flex h-12 w-12 items-center justify-center rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    class="h-5 w-5 fill-white"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path
-                      d="M10.9 2.1l9.899 1.415 1.414 9.9-9.192 9.192a1 1 0 0 1-1.414 0l-9.9-9.9a1 1 0 0 1 0-1.414L10.9 2.1zm2.828 8.486a2 2 0 1 0 2.828-2.829 2 2 0 0 0-2.828 2.829z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <h3 class="font-display text-jacarta-700 mb-4 text-lg dark:text-white">4. List Them For Sale</h3>
-              <p class="dark:text-jacarta-300">
-                Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to
-                sell your NFTs!
-              </p>
-            </div>
-          </div>
-
+          
           <p class="text-jacarta-700 mx-auto mt-20 max-w-2xl text-center text-lg dark:text-white">
             Join our mailing list to stay in the loop with our newest feature releases, tips and tricks
             for navigating Egaku

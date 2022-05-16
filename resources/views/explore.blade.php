@@ -45,6 +45,12 @@
 
 @section('content')
 <main>
+  @if ($message = Session::get('warning'))
+  <div class="alert alert-warning alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>	
+    <strong>{{ $message }}</strong>
+  </div>
+  @endif
       <!-- Collections -->
       <section class="relative py-24">
         <picture class="pointer-events-none absolute inset-0 -z-10 dark:hidden">

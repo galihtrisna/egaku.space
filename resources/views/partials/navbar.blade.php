@@ -495,7 +495,7 @@
 
             
                 <a
-                  href="user.html"
+                  href="{{route('myprofile')}}"
                   class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors"
                 >
                   <svg

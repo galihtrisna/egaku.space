@@ -166,7 +166,7 @@
               document.write(new Date().getFullYear())
             </script>
             Egaku — Develop by
-            <a href="https://deothemes.com" class="hover:text-accent">Galih Trisna</a></span
+            <a href="https://galihtrisna.github.io" target="_blank" class="hover:text-accent">Galih Trisna</a></span
           >
           <ul class="dark:text-jacarta-400 flex flex-wrap space-x-4 text-sm">
             <li>

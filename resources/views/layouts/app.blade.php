@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Egaku is ">
+    <meta name="description" content="When it comes to a great idea, you know it when you see it">
     <meta name="author" content="Galih Trisna">
     <meta name="keywords" content="egaku">
 
@@ -23,6 +23,7 @@
     itemscope
     itemtype="http://schema.org/WebPage"
     >
+    @include('sweetalert::alert')
     @include('partials.navbar')
     @yield('content') 
     @include('partials.footer')

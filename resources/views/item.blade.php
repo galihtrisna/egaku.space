@@ -14,7 +14,7 @@
             <figure class="mb-8 md:w-2/5 md:flex-shrink-0 md:flex-grow-0 md:basis-auto lg:w-1/2">
               <img
                 src="{{asset('share_image/'.$data->file)}}"
-                alt="{{$data->Name}}"
+                alt="{{$data->Name}} - {{$data->Description}}"
                 class="cursor-pointer rounded-[1.25rem]"
                 data-bs-toggle="modal"
                 data-bs-target="#imageModal"
@@ -62,7 +62,7 @@
               <div class="mb-3 flex">
                 <!-- Collection -->
                 <div class="flex items-center">
-                  <a href="collection.html" class="text-accent mr-2 text-sm font-bold">{{$data->Name_of_user}}</a>
+                  <a href="{{route('profile', $iduser[0]->id)}}" class="text-accent mr-2 text-sm font-bold">{{$data->Name_of_user}}</a>
                   <span
                     class="dark:border-jacarta-600 bg-green inline-flex h-6 w-6 items-center justify-center rounded-full border-2 border-white"
                     data-tippy-content="Verified Account"
@@ -232,7 +232,7 @@
                         class="dark:border-jacarta-600 border-jacarta-100 flex items-center border-t py-4 px-4"
                         role="cell"
                       >
-                        <a href="user.html" class="text-accent">{{$riwayat->name}}</a>
+                        <a href="#" class="text-accent">{{$riwayat->name}}</a>
                       </div>
                       
                     </div>
@@ -275,7 +275,7 @@
                         <a href="{{route('item', ['id'=>$value], ['Email_of_user'=>$value])}}">
                           <img
                             src="{{asset('share_image/'.$value->file)}}"
-                            alt="{{$value->file}}"
+                            alt="{{$value->Name}} - {{$value->Description}}"
                             width="230"
                             height="230"
                             style="width: 230px; height: 230px; object-fit: contain;"

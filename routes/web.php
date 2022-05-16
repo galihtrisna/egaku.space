@@ -15,16 +15,14 @@ use App\Http\Controllers\ShareController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\DownloadHistoryController::class, 'popular'])->name('welcome');
 
 
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\DownloadHistoryController::class, 'popular2'])->name('home');
     Route::get('/share', [App\Http\Controllers\HomeController::class, 'share'])->name('share');
     Route::post('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
     Route::get('/profile', function(){return view ('profile');})->name('profile'); 
@@ -35,6 +33,14 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/explore/item/{id}', [App\Http\Controllers\shareController::class, 'item'])->name('item');
     Route::get('/explore/item/download/{id}', [App\Http\Controllers\shareController::class, 'download'])->name('download');
     Route::post('/explore/item/download/history', [App\Http\Controllers\DownloadHistoryController::class, 'download_history_item'])->name('download_history_item');
+    
+    Route::get('/myprofile',  [ShareController::class, 'myprofile'])->name('myprofile');
+    Route::get('/myprofile/delete/item/{id}', [App\Http\Controllers\shareController::class, 'delete'])->name('delete');
+    Route::get('/myprofile/edit/item/{id}', [ShareController::class, 'edititem'])->name('edititem');
+    Route::post('/myprofole/update/item/{id}', [ShareController::class, 'updateitem'])->name('updateitem');
+    Route::get('/myprofile/deletehistory/item/{id}', [App\Http\Controllers\DownloadHistoryController::class, 'deletehistory'])->name('delete.history');
+
+    Route::get('/profile/{id}', [ShareController::class, 'userprofile'])->name('profile');
 
     Route::get('/explore/search', [App\Http\Controllers\shareController::class, 'search'])->name('search');
 });
