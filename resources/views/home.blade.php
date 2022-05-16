@@ -118,7 +118,7 @@
                 background-image: url(https://cdn.jsdelivr.net/npm/emoji-datasource-apple@7.0.2/img/apple/64/1f525.png);
               "
             ></span>
-            Hot Bids
+            Most Downloaded
           </h2>
 
           <div class="relative">
