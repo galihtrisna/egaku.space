@@ -1,3 +1,6 @@
+
+
 <p align="center"><a href="https://egaku.space" target="_blank"><img src="https://raw.githubusercontent.com/galihtrisna/egaku.space/master/public/img/logo_white.png" width="400"></a></p>
 
-<center><h1 style="text-align: center;">Coming Soon</h1></center>
+<center><h1 style="text-align: center;"><a href="https://egaku.space">has been released</a></h1>
+<p>beta version</p></center>
