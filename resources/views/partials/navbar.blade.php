@@ -2,7 +2,7 @@
     <header class="js-page-header fixed top-0 z-20 w-full backdrop-blur transition-colors">
       <div class="flex items-center px-6 py-6 xl:px-24">
         <!-- Logo -->
-        <a href="index.html" class="shrink-0">
+        <a href="{{route('home')}}" class="shrink-0">
           <img src="{{asset('img/logo.png')}}" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
           <img src="{{asset('img/logo_white.png')}}" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
         </a>
@@ -41,7 +41,7 @@
             class="t-0 dark:bg-jacarta-800 fixed left-0 z-10 flex w-full items-center justify-between bg-white p-6 lg:hidden"
           >
             <!-- Mobile Logo -->
-            <a href="index.html" class="shrink-0">
+            <a href="{{route('home')}}" class="shrink-0">
               <img src="{{asset('img/logo.png')}}" class="max-h-7 dark:hidden" alt="Egaku | Visual Discovery" />
               <img src="{{asset('img/logo_white.png')}}" class="hidden max-h-7 dark:block" alt="Egaku | Visual Discovery" />
             </a>
@@ -151,7 +151,7 @@
                   </li>
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="mr-3 rounded-xl bg-[#E4FCF4] p-[0.375rem]">
@@ -173,7 +173,7 @@
                   </li>
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="mr-3 rounded-xl bg-[#FDF7EE] p-[0.375rem]">
@@ -195,7 +195,7 @@
                   </li>
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="mr-3 rounded-xl bg-[#F2EEFF] p-[0.375rem]">
@@ -217,7 +217,7 @@
                   </li>
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="mr-3 rounded-xl bg-[#FFEEFA] p-[0.375rem]">
@@ -237,7 +237,7 @@
                   </li>
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="mr-3 rounded-xl bg-[#EAF2FE] p-[0.375rem]">
@@ -259,7 +259,7 @@
                   </li>
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="mr-3 rounded-xl bg-[#EBEDFF] p-[0.375rem]">
@@ -281,7 +281,7 @@
                   </li>
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="mr-3 rounded-xl bg-[#F5FFED] p-[0.375rem]">
@@ -303,7 +303,7 @@
                   </li>
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="mr-3 rounded-xl bg-[#FFEEEE] p-[0.375rem]">
@@ -325,7 +325,7 @@
                   </li>
                   <li>
                     <a
-                      href="collections.html"
+                      href="{{route('explore')}}"
                       class="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center rounded-xl px-5 py-2 transition-colors"
                     >
                       <span class="mr-3 rounded-xl bg-[#EEFCFF] p-[0.375rem]">

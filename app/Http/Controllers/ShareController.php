@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Share;
 use Auth;
 use File;
+use Image;
 
 class ShareController extends Controller
 {
@@ -70,7 +71,8 @@ class ShareController extends Controller
 
         if ($request->hasfile('file')) {            
             $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('file')->getClientOriginalName());
-            $request->file('file')->move(public_path('share_image'), $filename);
+            $imageResize = Image::make($request->file('file'))->encoder('png', 10);
+            $imageResize->move(public_path('share_image'), $filename);
              $share = share::create([
             'file' => $filename,
             'Name' => $request->name,
